@@ -131,11 +131,19 @@ function SearchPost($key)
     $sql = "SELECT * FROM product WHERE ProductName LIKE '%$key%' LIMIT 100;";
     $result = $conn->query($sql);
 
+    $rows = array();
+
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            echo "id: " . $row["id"] . " - Name: " . $row["ProductName"] . " " . $row["CategoryName"] . " " . $row["RegularPrice"] . "<br>";
+            $rows[] = $row;
         }
-    } else {
-        echo "0 results";
     }
+    echo json_encode($rows);
+    // if ($result->num_rows > 0) {
+    //     while ($row = $result->fetch_assoc()) {
+    //         echo "id: " . $row["id"] . " - Name: " . $row["ProductName"] . " " . $row["CategoryName"] . " " . $row["RegularPrice"] . "<br>";
+    //     }
+    // } else {
+    //     echo "0 results";
+    // }
 }
