@@ -60,7 +60,7 @@
         <div class="container">
             <form method="get" action="../server/postcontroller.php" id="searchForm">
                 <input type="hidden" id="action" name="action" value="search">
-                <input type="text" placeholder="Search.." name="key">
+                <input type="text" placeholder="Search.." name="key" oninput="submitForm()">
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>
             <h2>Quản lý tin đăng</h2>
@@ -120,12 +120,15 @@
 <script>
     $(document).ready(function() {
         SearchClicked();
-        $('#searchForm').submit();
+        submitForm();
     });
+    const submitForm = function() {
+        $('#searchForm').submit();
+
+    }
     const SearchClicked = function() {
         let searchForm = $('#searchForm');
         let contentBox = $('.contentBox');
-
         searchForm.on("submit", (e) => {
             e.preventDefault();
             let action = searchForm[0][0].value;
