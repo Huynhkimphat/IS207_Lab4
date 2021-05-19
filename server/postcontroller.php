@@ -23,14 +23,19 @@ if ($action == 'create') {
     $post->imageLink = $_GET["imageLink"];
     $post->productLink = $_GET["productLink"];
     UpdatePost($post);
+} else if ($action == 'search') {
+    $key = $_GET["key"];
+    SearchPost($key);
 }
 
 
 function CreateNewPost($post)
 {
     $servername = "localhost";
-    $username = "root";
-    $password = "";
+    $username = "magentoUser";
+    $password = "Kimphat@2001";
+    // $username = "root";
+    // $password = "";
     $dbname = "dealcongnghe";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -45,7 +50,8 @@ function CreateNewPost($post)
         '$post->imageLink','$post->productLink');";
 
     if ($conn->query($sql) === TRUE) {
-        header("LOCATION: http://localhost:8080/Dealcongnghe/client/managepost.php");
+        header("LOCATION: http://localhost/IS207_Lab4/client/managepost.php");
+        // header("LOCATION: http://localhost:8080/Dealcongnghe/client/managepost.php");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -55,8 +61,10 @@ function CreateNewPost($post)
 function DeletePost($postId)
 {
     $servername = "localhost";
-    $username = "root";
-    $password = "";
+    $username = "magentoUser";
+    $password = "Kimphat@2001";
+    // $username = "root";
+    // $password = "";
     $dbname = "dealcongnghe";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -66,7 +74,9 @@ function DeletePost($postId)
     $sql = "DELETE FROM product WHERE id=$postId";
 
     if ($conn->query($sql) === TRUE) {
-        header("LOCATION: http://localhost:8080/Dealcongnghe/client/managepost.php");
+        header("LOCATION: http://localhost/IS207_Lab4/client/managepost.php");
+        // header("LOCATION: http://localhost:8080/Dealcongnghe/client/managepost.php");
+
     } else {
         echo "Error deleting record: " . $conn->error;
     }
@@ -76,8 +86,10 @@ function DeletePost($postId)
 function UpdatePost($post)
 {
     $servername = "localhost";
-    $username = "root";
-    $password = "";
+    $username = "magentoUser";
+    $password = "Kimphat@2001";
+    // $username = "root";
+    // $password = "";
     $dbname = "dealcongnghe";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -94,10 +106,36 @@ function UpdatePost($post)
             ProductLink='$post->productLink' 
             WHERE Id=$post->postId";
     if ($conn->query($sql) === TRUE) {
-        header("LOCATION: http://localhost:8080/Dealcongnghe/client/managepost.php");
+        header("LOCATION: http://localhost/IS207_Lab4/client/managepost.php");
+        // header("LOCATION: http://localhost:8080/Dealcongnghe/client/managepost.php");
     } else {
         echo "Error updating record: " . $conn->error;
     }
 
     $conn->close();
+}
+function SearchPost($key)
+{
+    $servername = "localhost";
+    $username = "magentoUser";
+    $password = "Kimphat@2001";
+    // $username = "root";
+    // $password = "";
+    $dbname = "dealcongnghe";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $sql = "SELECT * FROM product WHERE ProductName LIKE '%$key%' LIMIT 100;";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo "id: " . $row["id"] . " - Name: " . $row["ProductName"] . " " . $row["CategoryName"] . " " . $row["RegularPrice"] . "<br>";
+        }
+    } else {
+        echo "0 results";
+    }
 }
