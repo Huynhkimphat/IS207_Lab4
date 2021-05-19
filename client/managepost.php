@@ -32,7 +32,6 @@
         .card {
             min-height: 550px;
             margin-bottom: 10px;
-            ;
         }
     </style>
 </head>
@@ -65,49 +64,48 @@
             </form>
             <h2>Quản lý tin đăng</h2>
             <div class="row contentBox">
-                <?php
-                // header("Content-type: text/html; charset=utf-8");
-                // $servername = "localhost";
-                // $username = "magentoUser";
-                // $password = "Kimphat@2001";
-                // // $username = "root";
-                // // $password = "";
-                // $dbname = "dealcongnghe";
-                // $conn = new mysqli($servername, $username, $password, $dbname);
-                // mysqli_set_charset($conn, 'UTF8');
-                // if ($conn->connect_error) {
-                //     die("Connection failed: " . $conn->connect_error);
-                // }
-                // $sql = "SELECT * FROM product";
-                // $result = $conn->query($sql);
-                // if ($result->num_rows > 0) {
-                //     while ($row = $result->fetch_assoc()) {
-                //         echo '
-                //         <div class="col-6 col-md-4 ">
-                //         <div class="card">
-                //         <img src="' . $row["ImageLink"] . '" class="card-img-top" alt="...">
-                //         <div class="card-body">
-                //             <h5 class="card-title">' . $row["ProductName"] . '</h5>
-                //             <p class="card-text">' . $row["CategoryName"] . '</p>
-                //             <p class="card-text">' . $row["RegularPrice"] . '</p>
-                //         <a href="./editpost.php?id=' . $row["Id"] . '" class="btn btn-info">Update</a>
-                //         <a href="../server/postcontroller.php?action=delete&id=' . $row["Id"] . '" class="btn btn-danger">Delete</a>
-                //         </div>
-                //         </div>
-                //         </div>
-                //         ';
-                //     }
-                // } else {
-                //     echo "0 results";
-                // }
-                // $conn->close();
-                ?>
+                <!-- <?php
+                        // header("Content-type: text/html; charset=utf-8");
+                        // $servername = "localhost";
+                        // $username = "magentoUser";
+                        // $password = "Kimphat@2001";
+                        // // $username = "root";
+                        // // $password = "";
+                        // $dbname = "dealcongnghe";
+                        // $conn = new mysqli($servername, $username, $password, $dbname);
+                        // mysqli_set_charset($conn, 'UTF8');
+                        // if ($conn->connect_error) {
+                        //     die("Connection failed: " . $conn->connect_error);
+                        // }
+                        // $sql = "SELECT * FROM product";
+                        // $result = $conn->query($sql);
+                        // if ($result->num_rows > 0) {
+                        //     while ($row = $result->fetch_assoc()) {
+                        //         echo '
+                        //         <div class="col-6 col-md-4 ">
+                        //         <div class="card">
+                        //         <img src="' . $row["ImageLink"] . '" class="card-img-top" alt="...">
+                        //         <div class="card-body">
+                        //             <h5 class="card-title">' . $row["ProductName"] . '</h5>
+                        //             <p class="card-text">' . $row["CategoryName"] . '</p>
+                        //             <p class="card-text">' . $row["RegularPrice"] . '</p>
+                        //         <a href="./editpost.php?id=' . $row["Id"] . '" class="btn btn-info">Update</a>
+                        //         <a href="../server/postcontroller.php?action=delete&id=' . $row["Id"] . '" class="btn btn-danger">Delete</a>
+                        //         </div>
+                        //         </div>
+                        //         </div>
+                        //         ';
+                        //     }
+                        // } else {
+                        //     echo "0 results";
+                        // }
+                        // $conn->close();
+                        ?> 
+                -->
             </div>
             <br />
         </div>
     </div>
-
-    <!-- Footer -->
     <div id="footer">
         <div class="container">
             <p>All rights reserved by DealCongNghe.Com</p>
@@ -124,7 +122,6 @@
     });
     const submitForm = function() {
         $('#searchForm').submit();
-
     }
     const SearchClicked = function() {
         let searchForm = $('#searchForm');

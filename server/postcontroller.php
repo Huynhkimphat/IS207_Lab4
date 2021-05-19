@@ -50,8 +50,7 @@ function CreateNewPost($post)
         '$post->imageLink','$post->productLink');";
 
     if ($conn->query($sql) === TRUE) {
-        header("LOCATION: http://localhost/IS207_Lab4/client/managepost.php");
-        // header("LOCATION: http://localhost:8080/Dealcongnghe/client/managepost.php");
+        header("LOCATION: ../client/managepost.php");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -74,9 +73,7 @@ function DeletePost($postId)
     $sql = "DELETE FROM product WHERE id=$postId";
 
     if ($conn->query($sql) === TRUE) {
-        header("LOCATION: http://localhost/IS207_Lab4/client/managepost.php");
-        // header("LOCATION: http://localhost:8080/Dealcongnghe/client/managepost.php");
-
+        header("LOCATION: ../client/managepost.php");
     } else {
         echo "Error deleting record: " . $conn->error;
     }
@@ -106,8 +103,7 @@ function UpdatePost($post)
             ProductLink='$post->productLink' 
             WHERE Id=$post->postId";
     if ($conn->query($sql) === TRUE) {
-        header("LOCATION: http://localhost/IS207_Lab4/client/managepost.php");
-        // header("LOCATION: http://localhost:8080/Dealcongnghe/client/managepost.php");
+        header("LOCATION: ../client/managepost.php");
     } else {
         echo "Error updating record: " . $conn->error;
     }
@@ -139,11 +135,4 @@ function SearchPost($key)
         }
     }
     echo json_encode($rows);
-    // if ($result->num_rows > 0) {
-    //     while ($row = $result->fetch_assoc()) {
-    //         echo "id: " . $row["id"] . " - Name: " . $row["ProductName"] . " " . $row["CategoryName"] . " " . $row["RegularPrice"] . "<br>";
-    //     }
-    // } else {
-    //     echo "0 results";
-    // }
 }
